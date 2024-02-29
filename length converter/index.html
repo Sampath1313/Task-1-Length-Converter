@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Length Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .input-group select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Length Converter</h2>
+    <div class="input-group">
+      <label>Length:</label>
+      <input type="number" id="length" placeholder="Enter length">
+    </div>
+    <div class="input-group">
+      <label>From:</label>
+      <select id="fromUnit">
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>To:</label>
+      <select id="toUnit">
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inch</option>
+        <option value="foot">Foot</option>
+        <option value="yard">Yard</option>
+        <option value="mile">Mile</option>
+      </select>
+    </div>
+    <button class="btn" onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convert() {
+      var length = parseFloat(document.getElementById('length').value);
+      var fromUnit = document.getElementById('fromUnit').value;
+      var toUnit = document.getElementById('toUnit').value;
+
+      var result;
+
+      if (fromUnit === 'cm') {
+        if (toUnit === 'm') {
+          result = length / 100;
+        } else if (toUnit === 'km') {
+          result = length / 100000;
+        } else if (toUnit === 'inch') {
+          result = length / 2.54;
+        } else if (toUnit === 'foot') {
+          result = length / 30.48;
+        } else if (toUnit === 'yard') {
+          result = length / 91.44;
+        } else if (toUnit === 'mile') {
+          result = length / 160934.4;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'm') {
+        if (toUnit === 'cm') {
+          result = length * 100;
+        } else if (toUnit === 'km') {
+          result = length / 1000;
+        } else if (toUnit === 'inch') {
+          result = length * 39.37;
+        } else if (toUnit === 'foot') {
+          result = length * 3.281;
+        } else if (toUnit === 'yard') {
+          result = length * 1.094;
+        } else if (toUnit === 'mile') {
+          result = length / 1609.344;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'km') {
+        if (toUnit === 'cm') {
+          result = length * 100000;
+        } else if (toUnit === 'm') {
+          result = length * 1000;
+        } else if (toUnit === 'inch') {
+          result = length * 39370.079;
+        } else if (toUnit === 'foot') {
+          result = length * 3280.84;
+        } else if (toUnit === 'yard') {
+          result = length * 1093.613;
+        } else if (toUnit === 'mile') {
+          result = length / 1.609;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'inch') {
+        if (toUnit === 'cm') {
+          result = length * 2.54;
+        } else if (toUnit === 'm') {
+          result = length / 39.37;
+        } else if (toUnit === 'km') {
+          result = length / 39370.079;
+        } else if (toUnit === 'foot') {
+          result = length / 12;
+        } else if (toUnit === 'yard') {
+          result = length / 36;
+        } else if (toUnit === 'mile') {
+          result = length / 63360;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'foot') {
+        if (toUnit === 'cm') {
+          result = length * 30.48;
+        } else if (toUnit === 'm') {
+          result = length / 3.281;
+        } else if (toUnit === 'km') {
+          result = length / 3280.84;
+        } else if (toUnit === 'inch') {
+          result = length * 12;
+        } else if (toUnit === 'yard') {
+          result = length / 3;
+        } else if (toUnit === 'mile') {
+          result = length / 5280;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'yard') {
+        if (toUnit === 'cm') {
+          result = length * 91.44;
+        } else if (toUnit === 'm') {
+          result = length / 1.094;
+        } else if (toUnit === 'km') {
+          result = length / 1093.613;
+        } else if (toUnit === 'inch') {
+          result = length * 36;
+        } else if (toUnit === 'foot') {
+          result = length * 3;
+        } else if (toUnit === 'mile') {
+          result = length / 1760;
+        } else {
+          result = length;
+        }
+      }
+
+      if (fromUnit === 'mile') {
+        if (toUnit === 'cm') {
+          result = length * 160934.4;
+        } else if (toUnit === 'm') {
+          result = length * 1609.344;
+        } else if (toUnit === 'km') {
+          result = length * 1.609;
+        } else if (toUnit === 'inch') {
+          result = length * 63360;
+        } else if (toUnit === 'foot') {
+          result = length * 5280;
+        } else if (toUnit === 'yard') {
+          result = length * 1760;
+        } else {
+          result = length;
+        }
+      }
+
+      document.getElementById('result').innerHTML = length + ' ' + fromUnit + ' is equal to ' + result + ' ' + toUnit;
+    }
+  </script>
+</body>
+</html>
